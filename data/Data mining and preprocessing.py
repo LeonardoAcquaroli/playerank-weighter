@@ -46,15 +46,8 @@ class FeaturesPreprocessing():
         # Add the label column to the dataframe and rename it ('goal-scored' disappears)
         self.dataframe[target] = y
         self.dataframe.rename({target: 'victory-defeat'}, axis=1, inplace=True)
-        # Get the matrix format of X and y
-        self.X = self.dataframe.loc[:, self.dataframe.columns != 'victory-defeat'].values
-        self.y = y.values
     def return_dataframe(self):
         return self.dataframe
-    def return_X(self):
-        return self.X
-    def return_y(self):
-        return self.y
 
 fetch_data = FeaturesPreprocessing(dataframe = df, target = "goal-scored", var_threshold = 0.02)
 # fetch_data.return_dataframe().to_csv("aggregated_data.csv")
